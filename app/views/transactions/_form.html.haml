@@ -1,0 +1,25 @@
+= form_for @transaction do |f|
+  - if @transaction.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@transaction.errors.count, "error")} prohibited this transaction from being saved:"
+      %ul
+        - @transaction.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :price
+    = f.number_field :price
+  .field
+    = f.label :period
+    = f.number_field :period
+  .field
+    = f.label :customer
+    = f.text_field :customer
+  .field
+    = f.label :product
+    = f.text_field :product
+  .actions
+    = f.submit 'Save'

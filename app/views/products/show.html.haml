@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @product.name
+%p
+  %b Price:
+  = @product.price
+%p
+  %b Limit:
+  = @product.limit
+%p
+  %b Customer:
+  = @product.customer_id
+
+= link_to 'Edit', edit_product_path(@product)
+\|
+= link_to 'Back', products_path
