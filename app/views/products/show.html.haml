@@ -11,7 +11,11 @@
   = @product.limit
 %p
   %b Customer:
-  = @product.customer_id
+  = @product.user_id
+
+= link_to new_product_transaction_path(@product.id) do
+  購入画面へ進む
+  -# - binding.pry
 
 = link_to 'Edit', edit_product_path(@product)
 \|

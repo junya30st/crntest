@@ -10,17 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_12_012009) do
+ActiveRecord::Schema.define(version: 2020_05_13_034042) do
 
   create_table "cards", force: :cascade do |t|
-    t.string "customer_id", null: false
     t.string "card_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_cards_on_customer_id"
+    t.string "customer_id"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
-  create_table "customers", force: :cascade do |t|
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.integer "limit"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "number"
+    t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.integer "period"
+    t.integer "user_id"
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_transactions_on_product_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -29,30 +53,8 @@ ActiveRecord::Schema.define(version: 2020_05_12_012009) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_customers_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
-  end
-
-  create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.integer "price"
-    t.integer "limit"
-    t.integer "customer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_products_on_customer_id"
-  end
-
-  create_table "transactions", force: :cascade do |t|
-    t.string "name"
-    t.integer "price"
-    t.integer "period"
-    t.integer "customer_id"
-    t.integer "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_transactions_on_customer_id"
-    t.index ["product_id"], name: "index_transactions_on_product_id"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

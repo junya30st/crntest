@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  belongs_to :customer
+  belongs_to :user
 
   enum limit:{
     特になし:0,
