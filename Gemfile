@@ -65,3 +65,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'erb2haml'
 gem 'haml-rails'
+gem 'payjp'
+gem "jquery-rails"

@@ -17,7 +17,11 @@
         %td= product.name
         %td= product.price
         %td= product.limit
-        %td= product.customer_id
+        %td= product.user_id
+        - if product.number.present?
+          = product.number
+        - else
+          なし
         %td= link_to 'Show', product
         %td= link_to 'Edit', edit_product_path(product)
         %td= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }
@@ -25,3 +29,5 @@
 %br
 
 = link_to 'New Product', new_product_path
+
+= link_to 'ログアウト', destroy_user_session_path, method: :delete

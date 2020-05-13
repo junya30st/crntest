@@ -1,4 +1,5 @@
 class Transaction < ApplicationRecord
-  belongs_to :customer
+  require "payjp"
+  belongs_to :user
   belongs_to :product
 end
