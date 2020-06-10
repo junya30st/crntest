@@ -1,4 +1,4 @@
-window.onload = function(){
+$(document).on('turbolinks:load', function(){
   console.log("ok")
   var form = $("#charge_form");
   Payjp.setPublicKey("pk_test_6d89c8792c4bb812515e783f"); //(自身の公開鍵)
@@ -30,4 +30,4 @@ window.onload = function(){
       }
     });
   });
-};
+});
